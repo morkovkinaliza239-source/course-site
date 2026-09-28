@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="_ds/classical-e24f6637-06f4-4622-a5fe-2e963effac79/styles.css">
+<script src="_ds/classical-e24f6637-06f4-4622-a5fe-2e963effac79/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  /* Синьо-бежева палітра: бежевий папір + синій акцент замість золотого */
+  :root {
+    --color-bg: #fbf9f5;
+    --color-surface: #f3f0e8;
+    --color-text: #14181e;
+    --color-divider: color-mix(in srgb, #14181e 14%, transparent);
+    --color-accent: #1B3A5C;
+    --color-accent-2: #1B3A5C;
+    --color-accent-100: #eef1f5;
+    --color-accent-200: #cfd8e2;
+    --color-accent-300: #a6b6c6;
+    --color-accent-400: #7089a0;
+    --color-accent-500: #3b5f80;
+    --color-accent-600: #1B3A5C;
+    --color-accent-700: #17324f;
+    --color-accent-800: #122740;
+    --color-accent-900: #0d1c2e;
+    --color-accent-2-100: #eef1f5;
+    --color-accent-2-200: #cfd8e2;
+    --color-accent-2-300: #a6b6c6;
+    --color-accent-2-400: #7089a0;
+    --color-accent-2-500: #3b5f80;
+    --color-accent-2-600: #1B3A5C;
+    --color-accent-2-700: #17324f;
+    --color-accent-2-800: #122740;
+    --color-accent-2-900: #0d1c2e;
+  }
+  .plate { filter: contrast(1.02) saturate(0.92); }
+  body { margin: 0; text-wrap: pretty; -webkit-font-smoothing: antialiased; }
+  a { color: var(--color-accent-700); text-decoration: none; border-bottom: 1px solid var(--color-accent-300); }
+  a:hover { color: var(--color-accent-800); border-bottom-color: var(--color-accent-600); }
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .mod-plus { transform: rotate(45deg); }
+  input:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  .nav { flex-wrap: wrap; row-gap: 8px; }
+  @media (max-width: 560px) { .nav a { display: none; } }
+</style>
+</helmet>
+
+<div style="background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);min-height:100vh">
+
+<nav class="nav" style="position:sticky;top:0;z-index:20;background:var(--color-bg);padding-inline:clamp(24px,6vw,64px)">
+  <a href="#top" class="nav-brand" onClick="{{ goHome }}" style="border:0;color:var(--color-text);text-decoration:none">Онлайн-курс для e-commerce</a>
+  <a href="#program" onClick="{{ goCourse }}" style="border:0;color:var(--color-text);font-size:14px">Програма</a>
+  <a href="#author" onClick="{{ goAuthor }}" style="border:0;color:var(--color-text);font-size:14px">Автор</a>
+  <a href="#blog" onClick="{{ goBlog }}" style="border:0;color:var(--color-text);font-size:14px">Блог</a>
+  <button type="button" class="btn btn-primary" onClick="{{ goBuy }}">Купити курс</button>
+</nav>
+
+<sc-if value="{{ showCourse }}" hint-placeholder-val="{{ true }}">
+<div>
+  <section style="background:#132A42;color:#f3f0ea;padding:clamp(80px,11vw,150px) clamp(24px,6vw,64px) clamp(76px,9vw,124px)">
+    <div style="max-width:1160px;margin:0 auto">
+      <span style="display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(243,240,234,.62);margin:0 0 clamp(36px,5vw,64px)">ПРРО · CRM · Доставка · Бухгалтерія · Звітність — усе в одному курсі. Тільки практика</span>
+      <h1 style="font-family:var(--font-heading);font-weight:400;font-size:clamp(40px,6.8vw,96px);line-height:1.03;letter-spacing:-.02em;margin:0 0 clamp(32px,4vw,48px);margin-left:-.042em;max-width:17ch">
+        <span style="display:block">Ваш магазин продає.</span>
+        <span style="display:block">Тепер зробимо облік,</span>
+        <span style="display:block">за який не страшно.</span>
+      </h1>
+      <p style="font-size:17px;line-height:1.75;max-width:52ch;margin:0 0 40px;color:rgba(243,240,234,.8)">CRM, ПРРО, Доставка, Звітність і Фінмоніторинг — повний робочий контур ФОП для інтернет-магазину. 45 уроків, у яких ви натискаєте ті самі кнопки, що й ми на екрані. Ніякої теорії — тільки практика.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+        <button type="button" style="appearance:none;min-height:46px;padding:0 28px;border:1px solid #f3f0ea;background:#f3f0ea;color:#132A42;font-family:var(--font-body);font-size:15px;cursor:pointer" onClick="{{ goBuy }}">Купити курс — 4 900 ₴</button>
+        <button type="button" style="appearance:none;min-height:46px;padding:0 24px;border:1px solid rgba(243,240,234,.4);background:none;color:#f3f0ea;font-family:var(--font-body);font-size:15px;cursor:pointer" onClick="{{ goProgram }}">Переглянути програму</button>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1160px;margin:0 auto;padding:clamp(96px,10vw,140px) clamp(24px,6vw,64px)">
+    <h2 style="font-family:var(--font-heading);font-weight:400;font-size:clamp(30px,3.6vw,48px);line-height:1.12;letter-spacing:-.015em;margin:0 0 44px;max-width:26ch">Магазин працює, а облік живе окремим життям</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:40px 56px">
+      <div>
+        <h3 style="font-family:var(--font-heading);font-weight:400;font-size:24px;line-height:1.2;margin:0 0 14px;border-top:1px solid var(--color-divider);padding-top:18px">Чеки «як вийде»</h3>
+        <p style="font-size:16px;line-height:1.75;margin:0;color:color-mix(in srgb, var(--color-text) 80%, transparent)">Предоплата, післяплата, повернення — щоразу здогадки. А потім Z-звіти не збігаються з банком і ніхто не розуміє, де саме розійшлось.</p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--font-heading);font-weight:400;font-size:24px;line-height:1.2;margin:0 0 14px;border-top:1px solid var(--color-divider);padding-top:18px">CRM лише як блокнот</h3>
+        <p style="font-size:16px;line-height:1.75;margin:0;color:color-mix(in srgb, var(--color-text) 80%, transparent)">CRM стоїть, але банки, Нова Пошта і чеки не зведені в один процес. Менеджер робить руками те, що має робити автоматизація.</p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--font-heading);font-weight:400;font-size:24px;line-height:1.2;margin:0 0 14px;border-top:1px solid var(--color-divider);padding-top:18px">Прибуток на відчуття</h3>
+        <p style="font-size:16px;line-height:1.75;margin:0;color:color-mix(in srgb, var(--color-text) 80%, transparent)">Оборот видно, чистий дохід — ні. Реклама, закупка, повернення й витрати не зведені, тож рентабельність рахується «приблизно».</p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--font-heading);font-weight:400;font-size:24px;line-height:1.2;margin:0 0 14px;border-top:1px solid var(--color-divider);padding-top:18px">Ліміт і штрафи</h3>
+        <p style="font-size:16px;line-height:1.75;margin:0;color:color-mix(in srgb, var(--color-text) 80%, transparent)">Ніхто не контролює ліміт групи й дедлайни сплати ЄП та ЄСВ — про прострочення дізнаєтесь уже з вимоги податкової.</p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--font-heading);font-weight:400;font-size:24px;line-height:1.2;margin:0 0 14px;border-top:1px solid var(--color-divider);padding-top:18px">Лист від банку</h3>
+        <p style="font-size:16px;line-height:1.75;margin:0;color:color-mix(in srgb, var(--color-text) 80%, transparent)">Банк просить пояснити походження коштів і заблокував рахунок. Які документи потрібні і як швидко відповісти на фінмоніторинг — незрозуміло.</p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--font-heading);font-weight:400;font-size:24px;line-height:1.2;margin:0 0 14px;border-top:1px solid var(--color-divider);padding-top:18px">Усе в різних місцях</h3>
+        <p style="font-size:16px;line-height:1.75;margin:0;color:color-mix(in srgb, var(--color-text) 80%, transparent)">Замовлення в CRM, чеки в ПРРО, оплати в банку, посилки в Новій Пошті. Щоб звести картину, доводиться відкривати п'ять вкладок і таблицю.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#132A42;color:#f3f0ea;padding:clamp(80px,10vw,136px) clamp(24px,6vw,64px)">
+    <div style="max-width:1160px;margin:0 auto">
+      <span style="display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(243,240,234,.62);margin:0 0 20px">Сильні сторони курсу</span>
+      <h2 style="font-family:var(--font-heading);font-weight:400;font-size:clamp(28px,3.4vw,46px);line-height:1.14;letter-spacing:-.015em;margin:0 0 44px;max-width:30ch">Жоден зі знайдених курсів в Україні не вчить працювати з реальною CRM і правильною фіскалізацією</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:36px 56px">
+        <div>
+          <h3 style="font-family:var(--font-heading);font-weight:400;font-size:22px;line-height:1.2;margin:0 0 14px;border-top:1px solid #f3f0ea;padding-top:18px">Цей курс</h3>
+          <p style="font-size:16px;line-height:1.75;margin:0;color:rgba(243,240,234,.88)">Розкриває всі аспекти роботи інтернет-магазину в Україні — один безперервний шлях: від заявки клієнта й формування ТТН до фіскалізації та звіту в податкову.</p>
+        </div>
+        <div>
+          <h3 style="font-family:var(--font-heading);font-weight:400;font-size:22px;line-height:1.2;margin:0 0 14px;border-top:1px solid rgba(243,240,234,.28);padding-top:18px;color:rgba(243,240,234,.66)">Інші курси</h3>
+          <p style="font-size:16px;line-height:1.75;margin:0;color:rgba(243,240,234,.72)">Дають лише «паперову» частину: реєстрація, ставки, форми звітів. Далі власник магазину залишається сам на сам із CRM, чеками й звіркою.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1160px;margin:0 auto;padding:clamp(68px,7vw,92px) clamp(24px,6vw,64px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:36px 24px">
+      <div>
+        <p style="font-family:var(--font-heading);font-weight:400;font-size:clamp(36px,3.6vw,52px);line-height:1.1;font-feature-settings:'tnum' 1;margin:0">8</p>
+        <p style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 70%, transparent);margin:12px 0 0">модулів від реєстрації до звіту</p>
+      </div>
+      <div>
+        <p style="font-family:var(--font-heading);font-weight:400;font-size:clamp(36px,3.6vw,52px);line-height:1.1;font-feature-settings:'tnum' 1;margin:0">45</p>
+        <p style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 70%, transparent);margin:12px 0 0">уроків із записом екрана</p>
+      </div>
+      <div>
+        <p style="font-family:var(--font-heading);font-weight:400;font-size:clamp(36px,3.6vw,52px);line-height:1.1;font-feature-settings:'tnum' 1;margin:0;margin-left:-.129em">12</p>
+        <p style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 70%, transparent);margin:12px 0 0">місяців доступу до матеріалів</p>
+      </div>
+      <div>
+        <p style="font-family:var(--font-heading);font-weight:400;font-size:clamp(36px,3.6vw,52px);line-height:1.1;font-feature-settings:'tnum' 1;margin:0">3</p>
+        <p style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 70%, transparent);margin:12px 0 0">сервіси налаштуєте разом із нами</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" style="margin:0" />
+
+  <section id="video" style="max-width:1160px;margin:0 auto;padding:clamp(96px,10vw,140px) clamp(24px,6vw,64px)">
+    <span style="display:block;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 52%, transparent);margin:0 0 20px">Відеоогляд курсу</span>
+    <h2 style="font-family:var(--font-heading);font-weight:400;font-size:clamp(30px,3.6vw,48px);line-height:1.12;letter-spacing:-.015em;margin:0 0 40px;max-width:28ch">Увесь шлях ФОПа в e-commerce: від «Дії» до чистого прибутку</h2>
+    <video src="course-video.mp4" controls="" preload="metadata" playsinline="" style="display:block;width:100%;aspect-ratio:16/9;background:#132A42;border:1px solid var(--color-divider)"></video>
+  </section>
+
+  <hr class="hr" style="margin:0" />
+
+  <section id="program" style="max-width:1160px;margin:0 auto;padding:clamp(96px,10vw,140px) clamp(24px,6vw,64px)">
+    <span style="display:block;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 52%, transparent);margin:0 0 20px">Програма курсу</span>
+    <h2 style="font-family:var(--font-heading);font-weight:400;font-size:clamp(30px,3.6vw,48px);line-height:1.12;letter-spacing:-.015em;margin:0 0 16px;max-width:28ch">Вісім модулів — один робочий контур</h2>
+    <p style="font-size:16.5px;line-height:1.75;max-width:58ch;margin:0 0 40px;color:color-mix(in srgb, var(--color-text) 80%, transparent)">Натисніть модуль, щоб побачити уроки. Кожен урок — коротке відео з демонстрацією екрана та шаблонами, які можна одразу застосувати.</p>
+
+    <details style="border-top:1px solid var(--color-divider)">
+      <summary style="display:flex;align-items:baseline;gap:20px;padding:24px 0;min-height:44px">
+        <span style="font-family:var(--font-heading);font-size:15px;font-feature-settings:'tnum' 1;color:var(--color-accent-700);letter-spacing:.06em;min-width:3ch">01</span>
+        <span style="font-family:var(--font-heading);font-weight:400;font-size:clamp(21px,2.2vw,28px);line-height:1.25;flex:1">Реєстрація та старт</span>
+        <span class="mod-plus" style="font-size:22px;line-height:1;color:var(--color-accent);transition:transform .2s">+</span>
+      </summary>
+      <ul style="list-style:none;margin:0 0 28px;padding:0 0 0 calc(3ch + 20px);display:grid;gap:12px">
+        <li style="font-size:16px;line-height:1.6">Вступ до курсу — що таке ФОП і чому це простіше, ніж здається</li>
+        <li style="font-size:16px;line-height:1.6">Групи єдиного податку: яку обрати для інтернет-магазину</li>
+        <li style="font-size:16px;line-height:1.6">КВЕДи для e-commerce: базові та за нішею</li>
+        <li style="font-size:16px;line-height:1.6">Покрокова реєстрація через «Дію»</li>
+        <li style="font-size:16px;line-height:1.6">Обов'язкові документи: виписка з ЄДР, витяг з реєстру платників ЄП</li>
+        <li style="font-size:16px;line-height:1.6">Відкриття рахунку ФОП у банку</li>
+        <li style="font-size:16px;line-height:1.6">Розділення особистих і бізнес-коштів</li>
+        <li style="font-size:16px;line-height:1.6">Типові помилки новачків і як їх запобігти</li>
+      </ul>
+    </details>
+
+    <details style="border-top:1px solid var(--color-divider)">
+      <summary style="display:flex;align-items:baseline;gap:20px;padding:24px 0;min-height:44px">
+        <span style="font-family:var(--font-heading);font-size:15px;font-feature-settings:'tnum' 1;color:var(--color-accent-700);letter-spacing:.06em;min-width:3ch">02</span>
+        <span style="font-family:var(--font-heading);font-weight:400;font-size:clamp(21px,2.2vw,28px);line-height:1.25;flex:1">Основні правила роботи з ПРРО</span>
+        <span class="mod-plus" style="font-size:22px;line-height:1;color:var(--color-accent);transition:transform .2s">+</span>
+      </summary>
+      <ul style="list-style:none;margin:0 0 28px;padding:0 0 0 calc(3ch + 20px);display:grid;gap:12px">
+        <li style="font-size:16px;line-height:1.6">Законодавча база</li>
+        <li style="font-size:16px;line-height:1.6">Реєстрація ПРРО: покроково</li>
+        <li style="font-size:16px;line-height:1.6">Робочі зміни, приклади чеків, обов'язкові реквізити</li>
+        <li style="font-size:16px;line-height:1.6">Чеки предоплати та післясплати</li>
+        <li style="font-size:16px;line-height:1.6">Повернення товару та як це відобразити в обліку</li>
+        <li style="font-size:16px;line-height:1.6">Коли переходити на 3 групу</li>
+        <li style="font-size:16px;line-height:1.6">Штрафи та як їх уникнути</li>
+      </ul>
+    </details>
+
+    <details style="border-top:1px solid var(--color-divider)">
+      <summary style="display:flex;align-items:baseline;gap:20px;padding:24px 0;min-height:44px">
+        <span style="font-family:var(--font-heading);font-size:15px;font-feature-settings:'tnum' 1;color:var(--color-accent-700);letter-spacing:.06em;min-width:3ch">03</span>
+        <span style="font-family:var(--font-heading);font-weight:400;font-size:clamp(21px,2.2vw,28px);line-height:1.25;flex:1">Налаштування CRM</span>
+        <span class="mod-plus" style="font-size:22px;line-height:1;color:var(--color-accent);transition:transform .2s">+</span>
+      </summary>
+      <ul style="list-style:none;margin:0 0 28px;padding:0 0 0 calc(3ch + 20px);display:grid;gap:12px">
+        <li style="font-size:16px;line-height:1.6">Створення організації в CRM</li>
+        <li style="font-size:16px;line-height:1.6">Підключення банків: Приватбанк, monobank, NovaPay</li>
+        <li style="font-size:16px;line-height:1.6">Додавання доставки: Нова Пошта</li>
+        <li style="font-size:16px;line-height:1.6">Налаштування автоматизації чеків</li>
+        <li style="font-size:16px;line-height:1.6">Додавання сайтів та маркетплейсів</li>
+        <li style="font-size:16px;line-height:1.6">IP-телефонія</li>
+        <li style="font-size:16px;line-height:1.6">Налаштування чатів</li>
+        <li style="font-size:16px;line-height:1.6">Автогенерація бухгалтерських документів та їх відправка</li>
+        <li style="font-size:16px;line-height:1.6">Тестування роботи</li>
+      </ul>
+    </details>
+
+    <details style="border-top:1px solid var(--color-divider)">
+      <summary style="display:flex;align-items:baseline;gap:20px;padding:24px 0;min-height:44px">
+        <span style="font-family:var(--font-heading);font-size:15px;font-feature-settings:'tnum' 1;color:var(--color-accent-700);letter-spacing:.06em;min-width:3ch">04</span>
+        <span style="font-family:var(--font-heading);font-weight:400;font-size:clamp(21px,2.2vw,28px);line-height:1.25;flex:1">Облік продажів, витрат і прибутку</span>
+        <span class="mod-plus" style="font-size:22px;line-height:1;color:var(--color-accent);transition:transform .2s">+</span>
+      </summary>
+      <ul style="list-style:none;margin:0 0 28px;padding:0 0 0 calc(3ch + 20px);display:grid;gap:12px">
+        <li style="font-size:16px;line-height:1.6">Налаштування надходження товарів і складів</li>
+        <li style="font-size:16px;line-height:1.6">Статті витрат і звіт по витратах</li>
+        <li style="font-size:16px;line-height:1.6">Звіт по прибутку (продаж — закупка)</li>
+        <li style="font-size:16px;line-height:1.6">Звіт «чистий дохід»: прибуток мінус витрати й реклама</li>
+        <li style="font-size:16px;line-height:1.6">Рентабельність та окупність рекламних кампаній</li>
+      </ul>
+    </details>
+
+    <details style="border-top:1px solid var(--color-divider)">
+      <summary style="display:flex;align-items:baseline;gap:20px;padding:24px 0;min-height:44px">
+        <span style="font-family:var(--font-heading);font-size:15px;font-feature-settings:'tnum' 1;color:var(--color-accent-700);letter-spacing:.06em;min-width:3ch">05</span>
+        <span style="font-family:var(--font-heading);font-weight:400;font-size:clamp(21px,2.2vw,28px);line-height:1.25;flex:1">Звітність у податкову</span>
+        <span class="mod-plus" style="font-size:22px;line-height:1;color:var(--color-accent);transition:transform .2s">+</span>
+      </summary>
+      <ul style="list-style:none;margin:0 0 28px;padding:0 0 0 calc(3ch + 20px);display:grid;gap:12px">
+        <li style="font-size:16px;line-height:1.6">Кабінет платника податків: перший вхід і навігація</li>
+        <li style="font-size:16px;line-height:1.6">Єдиний податок та ЄСВ: ставки й строки для 2 групи</li>
+        <li style="font-size:16px;line-height:1.6">Єдиний податок та ЄСВ: ставки й строки для 3 групи</li>
+        <li style="font-size:16px;line-height:1.6">Дедлайни і що буде за прострочення</li>
+      </ul>
+    </details>
+
+    <details style="border-top:1px solid var(--color-divider)">
+      <summary style="display:flex;align-items:baseline;gap:20px;padding:24px 0;min-height:44px">
+        <span style="font-family:var(--font-heading);font-size:15px;font-feature-settings:'tnum' 1;color:var(--color-accent-700);letter-spacing:.06em;min-width:3ch">06</span>
+        <span style="font-family:var(--font-heading);font-weight:400;font-size:clamp(21px,2.2vw,28px);line-height:1.25;flex:1">Робота в бухгалтерській програмі</span>
+        <span class="mod-plus" style="font-size:22px;line-height:1;color:var(--color-accent);transition:transform .2s">+</span>
+      </summary>
+      <ul style="list-style:none;margin:0 0 28px;padding:0 0 0 calc(3ch + 20px);display:grid;gap:12px">
+        <li style="font-size:16px;line-height:1.6">Реєстрація в бухгалтерській програмі</li>
+        <li style="font-size:16px;line-height:1.6">Завантаження Z-звітів</li>
+        <li style="font-size:16px;line-height:1.6">Завантаження банківських виписок</li>
+        <li style="font-size:16px;line-height:1.6">Звірка по поверненнях</li>
+        <li style="font-size:16px;line-height:1.6">Книга обліку доходів і контроль ліміту</li>
+        <li style="font-size:16px;line-height:1.6">Практикум: подаємо звітність разом для 2 групи</li>
+        <li style="font-size:16px;line-height:1.6">Практикум: подаємо звітність разом для 3 групи</li>
+      </ul>
+    </details>
+
+    <details style="border-top:1px solid var(--color-divider)">
+      <summary style="display:flex;align-items:baseline;gap:20px;padding:24px 0;min-height:44px">
+        <span style="font-family:var(--font-heading);font-size:15px;font-feature-settings:'tnum' 1;color:var(--color-accent-700);letter-spacing:.06em;min-width:3ch">07</span>
+        <span style="font-family:var(--font-heading);font-weight:400;font-size:clamp(21px,2.2vw,28px);line-height:1.25;flex:1">Фінмоніторинг</span>
+        <span class="mod-plus" style="font-size:22px;line-height:1;color:var(--color-accent);transition:transform .2s">+</span>
+      </summary>
+      <ul style="list-style:none;margin:0 0 28px;padding:0 0 0 calc(3ch + 20px);display:grid;gap:12px">
+        <li style="font-size:16px;line-height:1.6">Фінмоніторинг інтернет-магазинів</li>
+        <li style="font-size:16px;line-height:1.6">Дедлайни і що буде за прострочення</li>
+      </ul>
+    </details>
+
+    <details style="border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider)">
+      <summary style="display:flex;align-items:baseline;gap:20px;padding:24px 0;min-height:44px">
+        <span style="font-family:var(--font-heading);font-size:15px;font-feature-settings:'tnum' 1;color:var(--color-accent-700);letter-spacing:.06em;min-width:3ch">08</span>
+        <span style="font-family:var(--font-heading);font-weight:400;font-size:clamp(21px,2.2vw,28px);line-height:1.25;flex:1">Податкова перевірка</span>
+        <span class="mod-plus" style="font-size:22px;line-height:1;color:var(--color-accent);transition:transform .2s">+</span>
+      </summary>
+      <ul style="list-style:none;margin:0 0 28px;padding:0 0 0 calc(3ch + 20px);display:grid;gap:12px">
+        <li style="font-size:16px;line-height:1.6">Документи для перевірки</li>
+        <li style="font-size:16px;line-height:1.6">Строки, за які перевіряють</li>
+      </ul>
+    </details>
+  </section>
+
+  <section style="max-width:1160px;margin:0 auto;padding:clamp(96px,10vw,140px) clamp(24px,6vw,64px)">
+    <span style="display:block;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 52%, transparent);margin:0 0 20px">Що входить у курс</span>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:24px">
+      <div class="card">
+        <p class="card-kicker">45 уроків</p>
+        <h3 class="card-title" style="margin:8px 0 10px">Відео із записом екрана</h3>
+        <p class="card-body" style="margin:0">Кожен крок показано в реальних кабінетах: «Дія», ПРРО, CRM, бухгалтерська програма, кабінет платника податків.</p>
+      </div>
+      <div class="card">
+        <p class="card-kicker">Шаблони</p>
+        <h3 class="card-title" style="margin:8px 0 10px">Документи й чек-листи</h3>
+        <p class="card-body" style="margin:0">Реєстраційний пакет, чек-лист дедлайнів, таблиця обліку витрат і рентабельності, форми для фінмоніторингу.</p>
+      </div>
+      <div class="card">
+        <p class="card-kicker">Практика</p>
+        <h3 class="card-title" style="margin:8px 0 10px">Два практикуми звітності</h3>
+        <p class="card-body" style="margin:0">Подаємо звіт разом на реальному прикладі — окремо для 2 та 3 групи єдиного податку.</p>
+      </div>
+      <div class="card">
+        <p class="card-kicker">12 місяців</p>
+        <h3 class="card-title" style="margin:8px 0 10px">Доступ і оновлення</h3>
+        <p class="card-body" style="margin:0">Матеріали залишаються з вами на рік, а при змінах у законодавстві уроки оновлюються без доплат.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" style="margin:0" />
+
+  <section style="max-width:1160px;margin:0 auto;padding:clamp(96px,10vw,140px) clamp(24px,6vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:48px 64px">
+    <div>
+      <h2 style="font-family:var(--font-heading);font-weight:400;font-size:clamp(26px,2.8vw,36px);line-height:1.15;margin:0 0 24px">Курс для вас, якщо</h2>
+      <ul style="list-style:none;margin:0;padding:0;display:grid;gap:16px">
+        <li style="font-size:16px;line-height:1.6;padding-left:26px;position:relative"><span style="position:absolute;left:0;color:var(--color-accent)">—</span>у вас працює інтернет-магазин і ви хочете вести облік самостійно, без «бухгалтера на дзвінку»</li>
+        <li style="font-size:16px;line-height:1.6;padding-left:26px;position:relative"><span style="position:absolute;left:0;color:var(--color-accent)">—</span>ви на 2 або 3 групі й не впевнені, що чеки та звіти зроблені правильно</li>
+        <li style="font-size:16px;line-height:1.6;padding-left:26px;position:relative"><span style="position:absolute;left:0;color:var(--color-accent)">—</span>хочете бачити чистий дохід і рентабельність реклами, а не лише оборот</li>
+        <li style="font-size:16px;line-height:1.6;padding-left:26px;position:relative"><span style="position:absolute;left:0;color:var(--color-accent)">—</span>плануєте передати рутину менеджеру, але спершу хочете зрозуміти процес самі</li>
+      </ul>
+    </div>
+    <div>
+      <h2 style="font-family:var(--font-heading);font-weight:400;font-size:clamp(26px,2.8vw,36px);line-height:1.15;margin:0 0 24px;color:color-mix(in srgb, var(--color-text) 70%, transparent)">Не для вас, якщо</h2>
+      <ul style="list-style:none;margin:0;padding:0;display:grid;gap:16px">
+        <li style="font-size:16px;line-height:1.6;padding-left:26px;position:relative;color:color-mix(in srgb, var(--color-text) 78%, transparent)"><span style="position:absolute;left:0">—</span>ви працюєте як ТОВ із загальною системою оподаткування</li>
+        <li style="font-size:16px;line-height:1.6;padding-left:26px;position:relative;color:color-mix(in srgb, var(--color-text) 78%, transparent)"><span style="position:absolute;left:0">—</span>шукаєте схеми, як не платити податки або обійти ПРРО</li>
+        <li style="font-size:16px;line-height:1.6;padding-left:26px;position:relative;color:color-mix(in srgb, var(--color-text) 78%, transparent)"><span style="position:absolute;left:0">—</span>потрібен повний аутсорс обліку без вашої участі</li>
+        <li style="font-size:16px;line-height:1.6;padding-left:26px;position:relative;color:color-mix(in srgb, var(--color-text) 78%, transparent)"><span style="position:absolute;left:0">—</span>ще немає продажів і ви тільки обираєте нішу</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="hr" style="margin:0" />
+
+  <section id="author" style="max-width:1160px;margin:0 auto;padding:clamp(96px,10vw,140px) clamp(24px,6vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px clamp(24px,5vw,80px);align-items:center">
+    <div>
+      <span style="display:block;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 52%, transparent);margin:0 0 20px">Автор курсу</span>
+      <h2 style="font-family:var(--font-heading);font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.15;margin:0 0 20px">Єлизавета Морковкіна</h2>
+      <p style="font-size:16.5px;line-height:1.75;margin:0 0 18px;max-width:52ch;color:color-mix(in srgb, var(--color-text) 82%, transparent)">Бухгалтерка-практик із 17-річним досвідом. У курсі показую не теорію, а робочий облік інтернет-магазину — так, як веду його щодня.</p>
+      <ul style="list-style:none;margin:0;padding:0;display:grid;gap:10px">
+        <li style="font-size:16px;line-height:1.6;border-top:1px solid var(--color-divider);padding-top:10px">17 років досвіду в бухгалтерському обліку</li>
+        <li style="font-size:16px;line-height:1.6;border-top:1px solid var(--color-divider);padding-top:10px">Магістр економічних наук, спеціальність «Облік і аудит» — КНЕУ</li>
+      </ul>
+    </div>
+    <figure class="plate" style="margin:0;width:min(400px,100%)">
+      <image-slot id="author-portrait" shape="rect" src="author-src.jpg" fit="cover" style="width:100%;aspect-ratio:4/5" placeholder="Фото автора курсу"></image-slot>
+    </figure>
+  </section>
+
+  <sc-if value="{{ showTestimonials }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <hr class="hr" style="margin:0" />
+    <section style="max-width:1160px;margin:0 auto;padding:clamp(96px,10vw,140px) clamp(24px,6vw,64px)">
+      <span style="display:block;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 52%, transparent);margin:0 0 36px">Відгуки учнів</span>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:40px 56px">
+        <figure style="margin:0">
+          <blockquote style="font-family:var(--font-heading);font-weight:400;font-size:clamp(21px,2vw,26px);line-height:1.35;margin:0 0 20px">«Вперше за два роки Z-звіти зійшлися з банком з першого разу. Модуль про чеки повернення я переглянула тричі — і закрила питання назавжди.»</blockquote>
+          <figcaption style="font-size:14.5px;line-height:1.5;color:color-mix(in srgb, var(--color-text) 70%, transparent)">— Юрій, інтернет-магазин дверей, Київ</figcaption>
+        </figure>
+        <figure style="margin:0">
+          <blockquote style="font-family:var(--font-heading);font-weight:400;font-size:clamp(21px,2vw,26px);line-height:1.35;margin:0 0 20px">«Налаштували CRM із банками й Новою Поштою за вечір. Менеджер більше не виписує чеки руками.»</blockquote>
+          <figcaption style="font-size:14.5px;line-height:1.5;color:color-mix(in srgb, var(--color-text) 70%, transparent)">— Олександр, магазин дитячих товарів, Одеса</figcaption>
+        </figure>
+        <figure style="margin:0">
+          <blockquote style="font-family:var(--font-heading);font-weight:400;font-size:clamp(21px,2vw,26px);line-height:1.35;margin:0 0 20px">«Нарешті бачу чистий дохід, а не оборот. Відключила дві рекламні кампанії, які працювали в мінус.»</blockquote>
+          <figcaption style="font-size:14.5px;line-height:1.5;color:color-mix(in srgb, var(--color-text) 70%, transparent)">— Оксана, інтернет-магазин сумок, Житомир</figcaption>
+        </figure>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <hr class="hr" style="margin:0" />
+
+  <section id="buy" style="max-width:1160px;margin:0 auto;padding:clamp(96px,10vw,140px) clamp(24px,6vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:48px 64px;align-items:start">
+    <div>
+      <span style="display:block;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 52%, transparent);margin:0 0 20px">Вартість</span>
+      <p style="font-family:var(--font-heading);font-weight:400;font-size:clamp(52px,6vw,84px);line-height:1;font-feature-settings:'tnum' 1;margin:0 0 20px">4 900 ₴</p>
+      <p style="font-size:16.5px;line-height:1.75;max-width:46ch;margin:0 0 28px;color:color-mix(in srgb, var(--color-text) 82%, transparent)">Один тариф — увесь курс: 8 модулів, 45 уроків, шаблони та практикуми, доступ 12 місяців із оновленнями.</p>
+      <ul style="list-style:none;margin:0;padding:0;display:grid;gap:10px;max-width:46ch">
+        <li style="font-size:16px;line-height:1.6;border-top:1px solid var(--color-divider);padding-top:10px">Оплата картою або на рахунок ФОП</li>
+        <li style="font-size:16px;line-height:1.6;border-top:1px solid var(--color-divider);padding-top:10px">Доступ відкриваємо протягом дня після оплати</li>
+        <li style="font-size:16px;line-height:1.6;border-top:1px solid var(--color-divider);padding-top:10px">Закриваючі документи для ФОП і ТОВ</li>
+      </ul>
+    </div>
+    <div class="card" style="padding:var(--space-6)">
+      <h3 style="font-family:var(--font-heading);font-weight:400;font-size:26px;line-height:1.2;margin:0 0 10px">Заявка на курс</h3>
+      <p style="font-size:15px;line-height:1.6;margin:0 0 24px;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Залиште контакти — надішлемо посилання на оплату та доступ.</p>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="border:1px solid var(--color-accent-300);padding:20px;font-size:15.5px;line-height:1.6">Дякуємо! Заявку отримано — ми напишемо вам протягом робочого дня.</div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;gap:16px">
+          <div class="field">
+            <label for="f-name">Ім'я</label>
+            <input class="input" id="f-name" type="text" placeholder="Як до вас звертатися" value="{{ fName }}" onChange="{{ onName }}" style="min-height:44px" />
+          </div>
+          <div class="field">
+            <label for="f-phone">Телефон або Telegram</label>
+            <input class="input" id="f-phone" type="tel" placeholder="+380" value="{{ fPhone }}" onChange="{{ onPhone }}" style="min-height:44px" />
+          </div>
+          <div class="field">
+            <label for="f-email">E-mail</label>
+            <input class="input" id="f-email" type="email" placeholder="you@example.com" value="{{ fEmail }}" onChange="{{ onEmail }}" style="min-height:44px" />
+          </div>
+          <button type="button" class="btn btn-primary btn-block" style="min-height:44px" onClick="{{ onSubmit }}">Надіслати заявку</button>
+          <p style="font-size:13px;line-height:1.5;margin:0;color:color-mix(in srgb, var(--color-text) 65%, transparent)">Натискаючи кнопку, ви погоджуєтесь з обробкою контактних даних.</p>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<sc-if value="{{ showBlog }}" hint-placeholder-val="{{ false }}">
+<section id="blog" style="max-width:1160px;margin:0 auto;padding:clamp(48px,6vw,88px) clamp(24px,6vw,64px) 84px">
+  <span style="display:block;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 52%, transparent);margin:0 0 20px">Блог</span>
+  <h1 style="font-family:var(--font-heading);font-weight:400;font-size:clamp(34px,4.6vw,62px);line-height:1.1;letter-spacing:-.015em;margin:0 0 16px;margin-left:-.042em;max-width:24ch">Облік інтернет-магазину простою мовою</h1>
+  <p style="font-size:16.5px;line-height:1.75;max-width:56ch;margin:0 0 40px;color:color-mix(in srgb, var(--color-text) 80%, transparent)">Розбори законодавства, інструкції по сервісах і відповіді на питання, які найчастіше ставлять власники магазинів.</p>
+
+  <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;align-items:center;padding-bottom:24px;border-bottom:1px solid var(--color-divider)">
+    <input class="input" type="search" placeholder="Пошук по статтях" value="{{ query }}" onChange="{{ onQuery }}" aria-label="Пошук по статтях" style="min-height:40px;min-width:240px;flex:1" />
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <sc-for list="{{ cats }}" as="cat" hint-placeholder-count="4">
+        <button type="button" class="tag tag-outline" onClick="{{ cat.onClick }}" style="{{ cat.style }}">{{ cat.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display:grid;gap:0">
+    <sc-for list="{{ posts }}" as="post" hint-placeholder-count="5">
+      <article style="border-bottom:1px solid var(--color-divider);padding:32px 0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 32px;align-items:baseline">
+        <div>
+          <p style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 52%, transparent);margin:0 0 12px;font-feature-settings:'tnum' 1">{{ post.cat }} · {{ post.date }}</p>
+          <h2 style="font-family:var(--font-heading);font-weight:400;font-size:clamp(23px,2.4vw,32px);line-height:1.2;margin:0 0 12px;max-width:34ch">{{ post.title }}</h2>
+          <p style="font-size:16px;line-height:1.75;margin:0 0 16px;max-width:62ch;color:color-mix(in srgb, var(--color-text) 80%, transparent)">{{ post.excerpt }}</p>
+          <button type="button" class="btn btn-ghost" onClick="{{ post.onOpen }}" style="min-height:40px">Читати статтю</button>
+        </div>
+        <p style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 60%, transparent);margin:0;white-space:nowrap">{{ post.read }}</p>
+      </article>
+    </sc-for>
+  </div>
+
+  <sc-if value="{{ noPosts }}" hint-placeholder-val="{{ false }}">
+    <p style="font-size:16.5px;line-height:1.75;padding:48px 0;color:color-mix(in srgb, var(--color-text) 70%, transparent)">За цим запитом статей не знайдено. Спробуйте іншу категорію або слово.</p>
+  </sc-if>
+</section>
+</sc-if>
+
+<sc-if value="{{ showArticle }}" hint-placeholder-val="{{ false }}">
+<article style="max-width:1160px;margin:0 auto;padding:clamp(40px,5vw,72px) clamp(24px,6vw,64px) 84px">
+  <button type="button" class="btn btn-ghost" onClick="{{ backToBlog }}" style="min-height:40px;margin-bottom:36px">← Усі статті</button>
+  <p style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 52%, transparent);margin:0 0 16px;font-feature-settings:'tnum' 1">{{ article.cat }} · {{ article.date }} · {{ article.read }}</p>
+  <h1 style="font-family:var(--font-heading);font-weight:400;font-size:clamp(32px,4.2vw,58px);line-height:1.12;letter-spacing:-.015em;margin:0 0 32px;margin-left:-.042em;max-width:26ch">{{ article.title }}</h1>
+  <hr class="hr" style="margin:0 0 36px" />
+  <div style="max-width:66ch;display:grid;gap:24px">
+    <sc-for list="{{ article.blocks }}" as="b" hint-placeholder-count="6">
+      <div>
+        <sc-if value="{{ b.isHead }}" hint-placeholder-val="{{ false }}">
+          <h2 style="font-family:var(--font-heading);font-weight:400;font-size:28px;line-height:1.25;margin:16px 0 0">{{ b.text }}</h2>
+        </sc-if>
+        <sc-if value="{{ b.isText }}" hint-placeholder-val="{{ true }}">
+          <p style="font-size:17.5px;line-height:1.8;margin:0;text-align:justify;hyphens:auto">{{ b.text }}</p>
+        </sc-if>
+        <sc-if value="{{ b.isNote }}" hint-placeholder-val="{{ false }}">
+          <p style="font-size:16.5px;line-height:1.75;margin:0;padding:20px 24px;border:1px solid var(--color-accent-300);color:var(--color-accent-800)">{{ b.text }}</p>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+  <div style="max-width:66ch;margin-top:56px;padding-top:32px;border-top:1px solid var(--color-divider)">
+    <h3 style="font-family:var(--font-heading);font-weight:400;font-size:26px;line-height:1.25;margin:0 0 12px">Хочете розібратися з обліком до кінця?</h3>
+    <p style="font-size:16.5px;line-height:1.75;margin:0 0 20px;color:color-mix(in srgb, var(--color-text) 80%, transparent)">У курсі ця тема розібрана покроково — разом із ПРРО, CRM, бухгалтерською програмою і звітністю.</p>
+    <button type="button" class="btn btn-primary" style="min-height:44px" onClick="{{ goBuy }}">Купити курс — 4 900 ₴</button>
+  </div>
+</article>
+</sc-if>
+
+<hr class="hr" style="margin:0" />
+<footer style="max-width:1160px;margin:0 auto;padding:44px clamp(24px,6vw,64px);display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;font-size:13px;line-height:1.6;color:color-mix(in srgb, var(--color-text) 70%, transparent)">
+  <span>© 2026 «ФОП без паніки». Курс з обліку для інтернет-магазинів.</span>
+</footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;startView&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;course&quot;, &quot;blog&quot;], &quot;default&quot;: &quot;course&quot;, &quot;tsType&quot;: &quot;'course' | 'blog'&quot;, &quot;section&quot;: &quot;Поведінка&quot; },
+  &quot;showTestimonials&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Поведінка&quot; }
+}">
+const POSTS = [
+  {
+    id: "prro-cheky",
+    cat: "ПРРО",
+    date: "12.09.2026",
+    read: "7 хв",
+    title: "Чек предоплати і чек післяплати: у чому різниця на практиці",
+    excerpt: "Найчастіша помилка магазинів — один тип чека на всі оплати. Розбираємо, коли фіскалізувати передоплату, коли — розрахунок при отриманні, і як це виглядає в Z-звіті.",
+    blocks: [
+      { t: "text", text: "Коли покупець платить карткою на сайті, а товар їде Новою Поштою наступного дня, у вас дві різні події: отримання коштів і передача товару. Податкова дивиться саме на момент розрахунку, і від цього залежить, який чек має бути виданий." },
+      { t: "head", text: "Передоплата" },
+      { t: "text", text: "Гроші отримані до відвантаження — чек формується датою надходження коштів, з відповідною формою оплати. У чеку обов'язково має бути назва товару або послуги так, як вона звучить у вашому обліку: «оплата замовлення» без номенклатури — це привід для питань." },
+      { t: "head", text: "Післяплата" },
+      { t: "text", text: "Розрахунок відбувається у відділенні перевізника, тому чек формується датою, коли кошти фактично зараховані як оплата за товар. Тут магазини найчастіше плутають дату відправлення з датою розрахунку — і отримують розбіжність між ПРРО і банківською випискою." },
+      { t: "note", text: "Практичне правило: чек завжди прив'язаний до розрахунку, а не до логістики. Якщо дата чека не збігається з датою руху грошей у виписці — звірка не зійдеться." },
+      { t: "head", text: "Як не ламати звірку" },
+      { t: "text", text: "Налаштуйте автоматизацію чеків у CRM так, щоб статус замовлення сам тригерив потрібний тип чека, а виписки завантажуйте в бухгалтерську програму щодня. Тоді розбіжність видно на одному замовленні, а не на всьому місяці." }
+    ]
+  },
+  {
+    id: "grupa-2-3",
+    cat: "Податки",
+    date: "05.09.2026",
+    read: "6 хв",
+    title: "2 чи 3 група: коли інтернет-магазину пора переходити",
+    excerpt: "Ліміт доходу, робота з ТОВ і маркетплейсами, ставка й навантаження на облік — чотири критерії, за якими зважується перехід.",
+    blocks: [
+      { t: "text", text: "Друга група дешевша й простіша, але має два обмеження, які найчастіше зупиняють зростаючий магазин: ліміт доходу і заборона надавати послуги юридичним особам, які не є платниками єдиного податку." },
+      { t: "head", text: "Ліміт доходу" },
+      { t: "text", text: "Контролювати ліміт потрібно не в кінці року, а щомісяця — у книзі обліку доходів. Якщо за поточними темпами ви вийдете за межу до грудня, перехід краще планувати заздалегідь, а не в момент перевищення." },
+      { t: "head", text: "Робота з контрагентами" },
+      { t: "text", text: "Щойно з'являються продажі через маркетплейси, комісійні договори або B2B-замовлення, друга група починається заважати. Третя дає свободу в контрагентах ціною відсоткової ставки від доходу." },
+      { t: "note", text: "Рахуйте не ставку, а загальну картину: податок, ЄСВ і час на облік. Іноді 5% від доходу дешевше, ніж втрачений канал продажів." }
+    ]
+  },
+  {
+    id: "salesdrive-setup",
+    cat: "CRM",
+    date: "28.08.2026",
+    read: "9 хв",
+    title: "CRM: мінімальне налаштування, після якого зникає ручна робота",
+    excerpt: "Банки, Нова Пошта, автоматизація чеків і генерація документів — послідовність, у якій це варто підключати, щоб нічого не переробляти двічі.",
+    blocks: [
+      { t: "text", text: "Типова ситуація: CRM стоїть, замовлення в ній є, а менеджер усе одно вручну виписує чеки, створює накладні й копіює суми в таблицю. Причина майже завжди одна — інтеграції підключені у випадковому порядку." },
+      { t: "head", text: "Порядок підключення" },
+      { t: "text", text: "Спочатку організація і реквізити, потім банки, далі доставка, і лише після цього автоматизація чеків. Якщо почати з автоматизації, правила доведеться переписувати після кожної нової інтеграції." },
+      { t: "head", text: "Статуси як основа" },
+      { t: "text", text: "Автоматизація живе на статусах замовлення. Опишіть свій реальний процес — від «новий» до «отримано» і «повернення» — і лише потім навішуйте на статуси дії: чек, накладна, документи, повідомлення клієнту." },
+      { t: "note", text: "Обов'язково протестуйте повний цикл на тестовому замовленні, включно з поверненням. Саме повернення найчастіше ламає облік у магазинах." }
+    ]
+  },
+  {
+    id: "finmon",
+    cat: "Фінмоніторинг",
+    date: "19.08.2026",
+    read: "5 хв",
+    title: "Лист від банку про фінмоніторинг: що відповідати магазину",
+    excerpt: "Які документи готувати заздалегідь, щоб запит банку не перетворився на блокування рахунку.",
+    blocks: [
+      { t: "text", text: "Запит фінмоніторингу — це не покарання, а стандартна процедура. Проблеми виникають тоді, коли у ФОП немає під рукою документів, які підтверджують джерело надходжень і суть діяльності." },
+      { t: "head", text: "Мінімальний пакет" },
+      { t: "text", text: "Виписка з ЄДР, витяг платника єдиного податку, договори з перевізником і постачальниками, приклади чеків та звітність за останні періоди. Зберіть це один раз в окрему теку — і кожен наступний запит займе годину, а не тиждень." },
+      { t: "note", text: "Найгірша тактика — ігнорувати лист. Термін відповіді короткий, а наслідок прострочення — обмеження операцій за рахунком." }
+    ]
+  },
+  {
+    id: "chystyi-dokhid",
+    cat: "Облік",
+    date: "08.08.2026",
+    read: "8 хв",
+    title: "Оборот — не прибуток: як порахувати чистий дохід магазину",
+    excerpt: "Продаж мінус закупка, мінус витрати, мінус реклама. Розкладаємо формулу на звіти, які можна зібрати в CRM.",
+    blocks: [
+      { t: "text", text: "Магазин з оборотом у мільйон може бути збитковим — і власник дізнається про це лише тоді, коли закінчуються гроші на закупку. Щоб бачити реальну картину, потрібні три послідовні звіти." },
+      { t: "head", text: "Три рівні" },
+      { t: "text", text: "Перший: прибуток як різниця продажу й закупки. Другий: мінус операційні витрати — зарплати, сервіси, упаковка, комісії. Третій: мінус реклама по кожному каналу. Тільки третій рівень показує, чи заробляєте ви." },
+      { t: "note", text: "Рентабельність рахуйте по товарних групах, а не в цілому: майже завжди 20% асортименту дає майже весь прибуток." }
+    ]
+  },
+  {
+    id: "dedlainy",
+    cat: "Податки",
+    date: "25.07.2026",
+    read: "4 хв",
+    title: "Календар ФОП: дедлайни сплати ЄП та ЄСВ і ціна прострочення",
+    excerpt: "Коротка шпаргалка по строках для 2 і 3 групи та що саме нараховують за запізнення.",
+    blocks: [
+      { t: "text", text: "Більшість штрафів у ФОП виникає не через незнання правил, а через забуті дати. Найпростіше рішення — календар із нагадуваннями на весь рік, зроблений один раз у січні." },
+      { t: "head", text: "Що поставити в календар" },
+      { t: "text", text: "Строки сплати єдиного податку і ЄСВ для вашої групи, дати подання звітності, день щомісячної звірки ПРРО з банком і щоквартальна перевірка ліміту доходу." },
+      { t: "note", text: "Нагадування ставте на три робочі дні раніше за дедлайн: банківський платіж не завжди проходить у той самий день." }
+    ]
+  }
+];
+
+const CATS = ["Усі", "ПРРО", "Податки", "CRM", "Облік", "Фінмоніторинг"];
+
+class Component extends DCLogic {
+  state = { view: null, cat: "Усі", query: "", articleId: null, sent: false, name: "", phone: "", email: "" };
+
+  get view() { return this.state.view || this.props.startView || "course"; }
+
+  go(view) {
+    this.setState({ view, articleId: null });
+    if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  scrollTo(id) {
+    this.setState({ view: "course" });
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 72, behavior: "smooth" });
+    }, 60);
+  }
+
+  renderVals() {
+    const view = this.view;
+    const showTestimonials = this.props.showTestimonials ?? true;
+    const q = this.state.query.trim().toLowerCase();
+    const posts = POSTS.filter((p) => (this.state.cat === "Усі" || p.cat === this.state.cat) &&
+      (!q || (p.title + " " + p.excerpt + " " + p.cat).toLowerCase().includes(q)));
+    const article = POSTS.find((p) => p.id === this.state.articleId) || null;
+
+    return {
+      showCourse: view === "course",
+      showBlog: view === "blog",
+      showArticle: view === "article" && !!article,
+      showTestimonials,
+      goCourse: (e) => { e.preventDefault(); this.scrollTo("program"); },
+      goAuthor: (e) => { e.preventDefault(); this.scrollTo("author"); },
+      goHome: (e) => { e.preventDefault(); this.go("course"); },
+      goBlog: (e) => { e.preventDefault(); this.go("blog"); },
+      goProgram: () => this.scrollTo("program"),
+      goBuy: () => this.scrollTo("buy"),
+      backToBlog: () => this.go("blog"),
+      query: this.state.query,
+      onQuery: (e) => this.setState({ query: e.target.value }),
+      cats: CATS.map((label) => {
+        const active = label === this.state.cat;
+        return {
+          label,
+          onClick: () => this.setState({ cat: label }),
+          style: {
+            cursor: "pointer",
+            minHeight: "32px",
+            borderColor: active ? "var(--color-accent)" : "var(--color-divider)",
+            background: active ? "var(--color-accent-100)" : "transparent",
+            color: active ? "var(--color-accent-800)" : "var(--color-text)",
+            fontFamily: "var(--font-body)"
+          }
+        };
+      }),
+      posts: posts.map((p) => ({ ...p, onOpen: () => { this.setState({ view: "article", articleId: p.id }); window.scrollTo({ top: 0, behavior: "smooth" }); } })),
+      noPosts: view === "blog" && posts.length === 0,
+      article: article && {
+        ...article,
+        blocks: article.blocks.map((b) => ({ text: b.text, isHead: b.t === "head", isText: b.t === "text", isNote: b.t === "note" }))
+      },
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      fName: this.state.name,
+      fPhone: this.state.phone,
+      fEmail: this.state.email,
+      onName: (e) => this.setState({ name: e.target.value }),
+      onPhone: (e) => this.setState({ phone: e.target.value }),
+      onEmail: (e) => this.setState({ email: e.target.value }),
+      onSubmit: () => this.setState({ sent: true })
+    };
+  }
+}
+
+</script>
+</body>
+</html>
