@@ -392,29 +392,9 @@
       </ul>
     </div>
     <div class="card" style="padding:var(--space-6)">
-      <h3 style="font-family:var(--font-heading);font-weight:400;font-size:26px;line-height:1.2;margin:0 0 10px">Заявка на курс</h3>
-      <p style="font-size:15px;line-height:1.6;margin:0 0 24px;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Залиште контакти — надішлемо посилання на оплату та доступ.</p>
-      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
-        <div style="border:1px solid var(--color-accent-300);padding:20px;font-size:15.5px;line-height:1.6">Дякуємо! Заявку отримано — ми напишемо вам протягом робочого дня.</div>
-      </sc-if>
-      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
-        <div style="display:grid;gap:16px">
-          <div class="field">
-            <label for="f-name">Ім'я</label>
-            <input class="input" id="f-name" type="text" placeholder="Як до вас звертатися" value="{{ fName }}" onChange="{{ onName }}" style="min-height:44px" />
-          </div>
-          <div class="field">
-            <label for="f-phone">Телефон або Telegram</label>
-            <input class="input" id="f-phone" type="tel" placeholder="+380" value="{{ fPhone }}" onChange="{{ onPhone }}" style="min-height:44px" />
-          </div>
-          <div class="field">
-            <label for="f-email">E-mail</label>
-            <input class="input" id="f-email" type="email" placeholder="you@example.com" value="{{ fEmail }}" onChange="{{ onEmail }}" style="min-height:44px" />
-          </div>
-          <button type="button" class="btn btn-primary btn-block" style="min-height:44px" onClick="{{ onSubmit }}">Надіслати заявку</button>
-          <p style="font-size:13px;line-height:1.5;margin:0;color:color-mix(in srgb, var(--color-text) 65%, transparent)">Натискаючи кнопку, ви погоджуєтесь з обробкою контактних даних.</p>
-        </div>
-      </sc-if>
+      <h3 style="font-family:var(--font-heading);font-weight:400;font-size:26px;line-height:1.2;margin:0 0 10px">Реєстрація на курс</h3>
+      <p style="font-size:15px;line-height:1.6;margin:0 0 24px;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Зареєструйтесь на платформі навчання — там можна оплатити курс і одразу отримати доступ до матеріалів.</p>
+      <a class="btn btn-primary btn-block" href="https://westudy.ua/garnyizvit/course/enroll/d3944383-473f-482c-9a04-7d9580e1654a" target="_blank" rel="noopener" style="min-height:44px;display:flex;align-items:center;justify-content:center;text-decoration:none">Зареєструватися на курс</a>
     </div>
   </section>
 </div>
@@ -628,7 +608,7 @@ class Component extends DCLogic {
       goHome: (e) => { e.preventDefault(); this.go("course"); },
       goBlog: (e) => { e.preventDefault(); this.go("blog"); },
       goProgram: () => this.scrollTo("program"),
-      goBuy: () => this.scrollTo("buy"),
+      goBuy: () => { window.open("https://westudy.ua/garnyizvit/course/enroll/d3944383-473f-482c-9a04-7d9580e1654a", "_blank", "noopener"); },
       backToBlog: () => this.go("blog"),
       query: this.state.query,
       onQuery: (e) => this.setState({ query: e.target.value }),
