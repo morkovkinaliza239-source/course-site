@@ -58,7 +58,6 @@
 <nav class="nav" style="position:sticky;top:0;z-index:20;background:var(--color-bg);padding-inline:clamp(24px,6vw,64px)">
   <a href="#top" class="nav-brand" onClick="{{ goHome }}" style="border:0;color:var(--color-text);text-decoration:none">Онлайн-курс для e-commerce</a>
   <a href="#program" onClick="{{ goCourse }}" style="border:0;color:var(--color-text);font-size:14px">Програма</a>
-  <a href="#author" onClick="{{ goAuthor }}" style="border:0;color:var(--color-text);font-size:14px">Автор</a>
   <a href="#blog" onClick="{{ goBlog }}" style="border:0;color:var(--color-text);font-size:14px">Блог</a>
   <button type="button" class="btn btn-primary" onClick="{{ goBuy }}">Купити курс</button>
 </nav>
@@ -340,46 +339,6 @@
 
   <hr class="hr" style="margin:0" />
 
-  <section id="author" style="max-width:1160px;margin:0 auto;padding:clamp(96px,10vw,140px) clamp(24px,6vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px clamp(24px,5vw,80px);align-items:center">
-    <div>
-      <span style="display:block;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 52%, transparent);margin:0 0 20px">Автор курсу</span>
-      <h2 style="font-family:var(--font-heading);font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.15;margin:0 0 20px">Єлизавета Морковкіна</h2>
-      <p style="font-size:16.5px;line-height:1.75;margin:0 0 18px;max-width:52ch;color:color-mix(in srgb, var(--color-text) 82%, transparent)">Бухгалтерка-практик із 17-річним досвідом. У курсі показую не теорію, а робочий облік інтернет-магазину — так, як веду його щодня.</p>
-      <ul style="list-style:none;margin:0;padding:0;display:grid;gap:10px">
-        <li style="font-size:16px;line-height:1.6;border-top:1px solid var(--color-divider);padding-top:10px">17 років досвіду в бухгалтерському обліку</li>
-        <li style="font-size:16px;line-height:1.6;border-top:1px solid var(--color-divider);padding-top:10px">Магістр економічних наук, спеціальність «Облік і аудит» — КНЕУ</li>
-      </ul>
-    </div>
-    <figure class="plate" style="margin:0;width:min(400px,100%)">
-      <image-slot id="author-portrait" shape="rect" src="author-src.jpg" fit="cover" style="width:100%;aspect-ratio:4/5" placeholder="Фото автора курсу"></image-slot>
-    </figure>
-  </section>
-
-  <sc-if value="{{ showTestimonials }}" hint-placeholder-val="{{ true }}">
-  <div>
-    <hr class="hr" style="margin:0" />
-    <section style="max-width:1160px;margin:0 auto;padding:clamp(96px,10vw,140px) clamp(24px,6vw,64px)">
-      <span style="display:block;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 52%, transparent);margin:0 0 36px">Відгуки учнів</span>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:40px 56px">
-        <figure style="margin:0">
-          <blockquote style="font-family:var(--font-heading);font-weight:400;font-size:clamp(21px,2vw,26px);line-height:1.35;margin:0 0 20px">«Вперше за два роки Z-звіти зійшлися з банком з першого разу. Модуль про чеки повернення я переглянула тричі — і закрила питання назавжди.»</blockquote>
-          <figcaption style="font-size:14.5px;line-height:1.5;color:color-mix(in srgb, var(--color-text) 70%, transparent)">— Юрій, інтернет-магазин дверей, Київ</figcaption>
-        </figure>
-        <figure style="margin:0">
-          <blockquote style="font-family:var(--font-heading);font-weight:400;font-size:clamp(21px,2vw,26px);line-height:1.35;margin:0 0 20px">«Налаштували CRM із банками й Новою Поштою за вечір. Менеджер більше не виписує чеки руками.»</blockquote>
-          <figcaption style="font-size:14.5px;line-height:1.5;color:color-mix(in srgb, var(--color-text) 70%, transparent)">— Олександр, магазин дитячих товарів, Одеса</figcaption>
-        </figure>
-        <figure style="margin:0">
-          <blockquote style="font-family:var(--font-heading);font-weight:400;font-size:clamp(21px,2vw,26px);line-height:1.35;margin:0 0 20px">«Нарешті бачу чистий дохід, а не оборот. Відключила дві рекламні кампанії, які працювали в мінус.»</blockquote>
-          <figcaption style="font-size:14.5px;line-height:1.5;color:color-mix(in srgb, var(--color-text) 70%, transparent)">— Оксана, інтернет-магазин сумок, Житомир</figcaption>
-        </figure>
-      </div>
-    </section>
-  </div>
-  </sc-if>
-
-  <hr class="hr" style="margin:0" />
-
   <section id="buy" style="max-width:1160px;margin:0 auto;padding:clamp(96px,10vw,140px) clamp(24px,6vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:48px 64px;align-items:start">
     <div>
       <span style="display:block;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 52%, transparent);margin:0 0 20px">Вартість</span>
@@ -625,7 +584,6 @@ class Component extends DCLogic {
       showArticle: view === "article" && !!article,
       showTestimonials,
       goCourse: (e) => { e.preventDefault(); this.scrollTo("program"); },
-      goAuthor: (e) => { e.preventDefault(); this.scrollTo("author"); },
       goHome: (e) => { e.preventDefault(); this.go("course"); },
       goBlog: (e) => { e.preventDefault(); this.go("blog"); },
       goProgram: () => this.scrollTo("program"),
